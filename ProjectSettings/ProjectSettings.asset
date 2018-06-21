@@ -150,7 +150,11 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
+<<<<<<< HEAD
     iOS: com.dkg3
+=======
+    iOS: com.dagoch.classbuild
+>>>>>>> eb0802017d20ee92d43e0d10257eae49b6bab793
   buildNumber: {}
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 16
@@ -388,7 +392,11 @@ PlayerSettings:
     - Oculus
     - OpenVR
   - m_BuildTarget: iOS
+<<<<<<< HEAD
     m_Enabled: 1
+=======
+    m_Enabled: 0
+>>>>>>> eb0802017d20ee92d43e0d10257eae49b6bab793
     m_Devices:
     - cardboard
   m_BuildTargetEnableVuforiaSettings: []
