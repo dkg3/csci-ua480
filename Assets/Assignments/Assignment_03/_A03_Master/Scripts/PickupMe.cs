@@ -13,7 +13,7 @@ namespace A03Examples
         public bool grabbed = false;  // have i been picked up, or not?
         Rigidbody myRb;
         StrobeSelected strobe;
-        //public DrawDownPointer downPointer;
+        public DrawDownPointer downPointer;
 
         // Use this for initialization
         void Start()
@@ -25,23 +25,9 @@ namespace A03Examples
         // Update is called once per frame
         void Update()
         {
-            /*
-            if (grabbed) {
-                downPointer.DrawLine(transform.position);
-            }
-            */
-            if (transform.parent != null) 
+            if (grabbed)
             {
-                print("The transform.parent.position.y is" + transform.parent.position.y);
-                if (transform.parent.position.y < 1.594f)
-                {
-                    print("Inside where less than 1.594");
-                    transform.position = new Vector3(transform.position.x, .5f, transform.position.z);
-                }
-                else
-                {
-                    transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-                }
+                downPointer.DrawLine(transform.position);
             }
         }
 
@@ -58,7 +44,7 @@ namespace A03Examples
                 grabbed = false;
                 myRb.isKinematic = false;  //    .useGravity = true;
                 strobe.trigger = false;
-                //downPointer.DontDraw();
+                downPointer.DontDraw();
             }
             else
             {   // pick it up:
@@ -67,17 +53,8 @@ namespace A03Examples
                 grabbed = true;
                 strobe.trigger = true;   // turn on color strobe so we know we have it
                 myRb.isKinematic = true; //  .useGravity = false;
+
             }
         }
-        /*
-        public void OnCollisionEnter(Collision col)
-        {
-            // removes the individual capsules if collided with by the ball being shot
-            if (col.gameObject.name == "Plane")
-            {
-                col.gameObject.transform.position = new Vector3(col.gameObject.transform.position.x, 0.5f, col.gameObject.transform.position.z);
-            }
-        }
-        */
     }
 }

@@ -4,12 +4,15 @@ using UnityEngine;
 
 namespace A03Examples
 {
-   
+    /***
+    * GazeAtMe
+    * Implements basic timer selection of object.
+    * ***/
     public class GazeAtMe : MonoBehaviour
     {
         Rigidbody myRb;
-        public Color selectColor = Color.red;
-        public float popTime = 2.0f;
+        public Color selectColor = Color.red; // will fade to this color as time elapses
+        public float popTime = 2.0f;  // timer duration
 
         Color initialColor;
         float counter = 0;
@@ -24,20 +27,28 @@ namespace A03Examples
 
         }
 
+        /***
+         * GazeAndPop
+         * triggered when gaze intersects with collider
+         * **/
         public void GazeAndPop()
         {
             coroutine = Gaze();
             StartCoroutine(coroutine);
         }
 
-		
+		/***
+		 * Gaze
+		 * Coroutine, fades color towards selectColor until popTime has elapsed
+		 * Then pops cube.
+		 * **/
 		IEnumerator Gaze(){
             counter = 0;
             while (counter < popTime)
             {
                 Debug.Log("hi");
                 counter += Time.deltaTime;
-                meshRenderer.material.color = Color.Lerp(initialColor, selectColor, counter / 1f);
+                meshRenderer.material.color = Color.Lerp(initialColor, selectColor, counter / popTime);
                 yield return null;
             }
             myRb.AddForce(Vector3.up * 300 + Random.insideUnitSphere * .25f);
@@ -45,6 +56,11 @@ namespace A03Examples
             Reset();
         }
 
+        /***
+         * Reset
+         * Called when gaze stops intersecting collider
+         * Resets color and stops timer coroutine
+         * **/
 		public void Reset()
 		{
             StopCoroutine(coroutine);
