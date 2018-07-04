@@ -13,6 +13,8 @@ namespace A03dkg3
         StrobeSelected strobe;
         // mode to know if it is translation or rotation
         public bool mode = false;
+        float offset;
+        Vector3 lastPos;
 
         // Use this for initialization
         void Start()
@@ -20,6 +22,7 @@ namespace A03dkg3
             // get the rigidbody and strobe selected components from the start
             myRb = GetComponent<Rigidbody>();
             strobe = GetComponent<StrobeSelected>();
+            lastPos = transform.position;
         }
 
         // Update is called once per frame
@@ -46,7 +49,10 @@ namespace A03dkg3
                 // to much strain
                 if (mode)
                 {
-                    transform.Rotate(0, Input.GetAxis("Mouse X") * 30, 0);
+                    //transform.Rotate(0, Input.GetAxis("Mouse X") * 30, 0);
+                    offset = transform.position.x - lastPos.x;
+                    lastPos = transform.position;
+                    transform.Rotate(0, offset * 30, 0);
                 }
             }
         }
