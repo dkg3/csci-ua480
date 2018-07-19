@@ -14,7 +14,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Assignments/Assignment_03/A03_dkg3/Scenes/Part3_A03_dkg3.unity
     guid: 986e65da3e292456bb34b33c2de9f290
-  - enabled: 1
+  - enabled: 0
     path: Assets/Assignments/Assignment_04/A04_dkg3/Scenes/GazeMovement.unity
     guid: dbd2e0cf3c3e442a3959ce78a777915b
+  - enabled: 1
+    path: Assets/Assignments/Assignment_07/A07_dkg3/Scenes/Main.unity
+    guid: 99c9720ab356a0642a771bea13969a05
   m_configObjects: {}
